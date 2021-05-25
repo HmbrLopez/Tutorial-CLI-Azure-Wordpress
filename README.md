@@ -13,6 +13,14 @@ Tutorial Wordpress Cli Linux
 
     az group create --name NOMBRE_GRUPO_DE_RECURSOS --location centralus
     
-
+**Para crear una maquina virtual en tu grupo de recursos**
+        
+      az vm create \
+        --resource-group NOMBRE_GRUPO_DE_RECURSOS \
+        --location centralus \
+        --name NOMBRE_MAQUINA_VIRTUAL \
+        --image UbuntuLTS \
+        --admin-username azureuser \
+        --generate-ssh-keys     
   
   
