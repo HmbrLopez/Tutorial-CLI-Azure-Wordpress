@@ -23,4 +23,8 @@ Tutorial Wordpress Cli Linux
         --admin-username azureuser \
         --generate-ssh-keys     
   
+  **Copia aquí tu IP**
   
+        publicIpAddress": "23.99.204.43
+        
+   
