@@ -27,4 +27,16 @@ Tutorial Wordpress Cli Linux
   
         publicIpAddress": "23.99.204.43
         
+        
+**Con este comando obtienes todas las direcciones IP de todas las maquinas virtuales de tu grupo de recursos**
+
+        az network public-ip list --resource-group NOMBRE_GRUPO_DE_RECURSOS --query [].ipAddress
+        
+**Con este comando abres el puerto 80 que es necesario para que se funcione la conexion de la pagina** 
+
+        az vm open-port --port 80 --resource-group NOMBRE_GRUPO_DE_RECURSOS --name NOMBRE_MAQUINA_VIRTUAL
+
+**Con este comando accedes a la máquina virtual**
+
+        ssh azureuser@TU_DIRECCION_IP
    
