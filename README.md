@@ -54,8 +54,13 @@ Tutorial Wordpress Cli Linux
 LAMP (Linux, Apache, MariaDB y PHP) es un conjunto de aplicaciones ideales para el trabajo web y gestión de datos, en primer lugar, instalamos Apache si no lo tenemos con el siguiente comando:
 
     sudo apt install apache2
+      
     
 Todos los archivos de configuración de Apache2 están en el directorio /etc/apache2 y el archivo de configuración principal es /etc//etc/apache2/apache2.conf.
+
+**Te da la versión de Apache y verifica si está bien instalado**
+
+    apache2 -v  
 
 Vemos el estado de Apache con el siguiente comando:
 
@@ -74,44 +79,62 @@ Comprobamos el estado de MariaDB:
 
     sudo systemctl status mariadb
     
+
+Habilitamos su inicio desde el arranque:
+
+    sudo systemctl is-enabled mariadb
     
-**Te da la versión de Apache y verifica si está bien instalado**
+El siguiente paso será asegurar la instalación de MariaDB con el siguiente comando:
 
-    apache2 -v
-
+    sudo mysql_secure_installation
+    
+Ingresamos la contraseña deseada para el usuario root y luego respondemos lo siguiente:
+    
+    Set a root password? [Y/n] y
+    Remove anonymous users? [Y/n] y
+    Disallow root login remotely? [Y/n] y
+    Remove test database and access to it? [Y/n] y
+    Reload privilege tables now? [Y/n] y  
+    
 **Te da la versión de MySQL y verifica si está bien instalado**
 
     mysql -V
 
+Finalmente instalamos PHP y sus complementos con el siguiente comando:
+
+    sudo apt install php libapache2-mod-php php-mysql
+    
+    
 **Te da la versión de PHP y verifica si está bien instalado**
 
     php -v
     
- **Configure MySQL**
  
-    sudo mysql_secure_installation
-    
-Le Pedira una contraseña y la tendra que indicar y Debe responder con y (sí) al resto de las solicitudes y configurar una contraseña de root cuando se le solicite. Esta configuración solo tarda un momento en completarse.
-
 **Crear base de datos para wordpress**
 
-iniciamos mysql.
+Lo primero conectar con el motor de BBDD, con un usuario con privilegios para crear otros usuario y bases de datos, suele ser el usuario root
 
-    sudo mysql
+    sudo mysql -u root -p
+    
+(pedirá la clave).
 
-Crearemos un usuario y su base de datos para wordpress.
+Una vez dentro a mi me gusta ver las bases de datos
+
+    show databases;
+    
+Para crear el usuario:
 
     CREATE USER ‘hmbr’@‘localhost' IDENTIFIED VIA mysql_native_password;
     
-🐧
-  
+🐧 Ahora le establecemos una password:
+
     SET PASSWORD FOR ‘hmbr’@‘localhost' = PASSWORD(‘12345’);
     
-🐧
+🐧 Creamos la base de datos:
       
     CREATE DATABASE IF NOT EXISTS `hmbr`;
     
-🐧
+🐧 Le damos todos los privilegios sobre esta base de datos al usuario recién creado:
     
     GRANT ALL PRIVILEGES ON `hmbr`.* TO ‘hmbr’@‘localhost';
 
