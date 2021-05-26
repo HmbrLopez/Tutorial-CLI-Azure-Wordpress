@@ -1,17 +1,28 @@
 # Tutorial-CLI-Azure-Wordpress
 Tutorial Wordpress Cli Linux
 
+<img src="az/cap1.png" class="card-img-top" alt="...">
+<img src="az/cap2.png" class="card-img-top" alt="...">
+
+
 🐧
 <h1>Como Instalar Wordpress En Ubuntu Server Azure</h1>
+
 
 ## Suplanta las palabras en mayúsculas con tu info
 **Este es para obtener las listas de ubicaciones de servidores que tiene Azure**
 
+
     az account list-locations
+    
+
+<img src="az/cap3.png" class="card-img-top" alt="...">    
   
 **Con este creas un grupo de recursos dejar centralus**
 
     az group create --name NOMBRE_GRUPO_DE_RECURSOS --location centralus
+    
+<img src="az/cap4.png" class="card-img-top" alt="...">
     
 **Para crear una maquina virtual en tu grupo de recursos**
         
@@ -23,11 +34,15 @@ Tutorial Wordpress Cli Linux
         --admin-username azureuser \
         --generate-ssh-keys     
   
+<img src="az/cap5.png" class="card-img-top" alt="...">
+
   **Copia aquí tu IP**
   
         publicIpAddress": "23.99.204.43
         
-        
+<img src="az/cap6.png" class="card-img-top" alt="...">
+
+
 **Con este comando obtienes todas las direcciones IP de todas las maquinas virtuales de tu grupo de recursos**
 
         az network public-ip list --resource-group NOMBRE_GRUPO_DE_RECURSOS --query [].ipAddress
@@ -40,15 +55,16 @@ Tutorial Wordpress Cli Linux
 
         ssh azureuser@TU_DIRECCION_IP
         
+<img src="az/cap7.png" class="card-img-top" alt="...">
 **Un comando de Prueba si la maquina funciona**
 
         sudo apt-get moo        
-        
+<img src="az/cap8.png" class="card-img-top" alt="...">        
 **Con este comando actualizas la maquina**
 
         sudo apt-get update
         
- 
+<img src="az/cap9.png" class="card-img-top" alt="..."> 
  **Install Apache, PHP, and MySQL Para Poder Utilizar Wordpress**
  
 LAMP (Linux, Apache, MariaDB y PHP) es un conjunto de aplicaciones ideales para el trabajo web y gestión de datos, en primer lugar, instalamos Apache si no lo tenemos con el siguiente comando:
@@ -87,6 +103,7 @@ Habilitamos su inicio desde el arranque:
 El siguiente paso será asegurar la instalación de MariaDB con el siguiente comando:
 
     sudo mysql_secure_installation
+<img src="az/cap12.png" class="card-img-top" alt="...">    
     
 Ingresamos la contraseña deseada para el usuario root y luego respondemos lo siguiente:
     
@@ -95,7 +112,9 @@ Ingresamos la contraseña deseada para el usuario root y luego respondemos lo si
     Disallow root login remotely? [Y/n] y
     Remove test database and access to it? [Y/n] y
     Reload privilege tables now? [Y/n] y  
-    
+<img src="az/cap13.png" class="card-img-top" alt="...">
+<img src="az/cap14.png" class="card-img-top" alt="...">
+<img src="az/cap15.png" class="card-img-top" alt="...">
 **Te da la versión de MySQL y verifica si está bien instalado**
 
     mysql -V
@@ -117,8 +136,9 @@ Lo primero conectar con el motor de BBDD, con un usuario con privilegios para cr
     sudo mysql -u root -p
     
 (pedirá la clave).
+<img src="az/cap16.png" class="card-img-top" alt="...">
 
-Una vez dentro a mi me gusta ver las bases de datos
+Una vez dentro podemos ver las bases de datos
 
     show databases;
     
@@ -126,18 +146,19 @@ Para crear el usuario:
 
     CREATE USER ‘hmbr’@‘localhost' IDENTIFIED VIA mysql_native_password;
     
+   <img src="az/cap17.png" class="card-img-top" alt="...">
 🐧 Ahora le establecemos una password:
 
     SET PASSWORD FOR ‘hmbr’@‘localhost' = PASSWORD(‘12345’);
-    
+   <img src="az/cap18.png" class="card-img-top" alt="..."> 
 🐧 Creamos la base de datos:
       
     CREATE DATABASE IF NOT EXISTS `hmbr`;
-    
+  <img src="az/cap19.png" class="card-img-top" alt="...">  
 🐧 Le damos todos los privilegios sobre esta base de datos al usuario recién creado:
     
     GRANT ALL PRIVILEGES ON `hmbr`.* TO ‘hmbr’@‘localhost';
-    
+  <img src="az/cap20.png" class="card-img-top" alt="...">  
 🐧 Obtener la lista de los usuarios de MySQL.
 
     SELECT user FROM mysql.user;
