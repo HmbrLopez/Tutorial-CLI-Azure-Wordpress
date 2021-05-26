@@ -39,4 +39,14 @@ Tutorial Wordpress Cli Linux
 **Con este comando accedes a la máquina virtual**
 
         ssh azureuser@TU_DIRECCION_IP
+        
+**Un comando de Prueba si la maquina funciona**
+
+        sudo apt-get moo        
+        
+**Con este comando actualizas la maquina**
+
+        sudo apt-get update
+
+
    
