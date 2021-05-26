@@ -262,3 +262,5 @@ Damos clic en Aceptar y seremos redireccionados a la pagina de inicio de sesión
 
 Clic en “Acceder” y este será el entorno de WordPress
 <img src="az/cap26.png" class="card-img-top" alt="...">
+
+[Practica WORDPRESS Maquina Virtual Linux 🐧 ](README2.md)
