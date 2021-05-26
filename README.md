@@ -137,4 +137,105 @@ Para crear el usuario:
 🐧 Le damos todos los privilegios sobre esta base de datos al usuario recién creado:
     
     GRANT ALL PRIVILEGES ON `hmbr`.* TO ‘hmbr’@‘localhost';
+    
+🐧 Obtener la lista de los usuarios de MySQL.
 
+    SELECT user FROM mysql.user;
+    
+ **Descargar archivo de WordPress Linux**
+ 
+En primer lugar, vamos a descargar la última versión de WordPress con el siguiente comando:
+
+    sudo wget -c http://wordpress.org/latest.tar.gz
+
+Una vez descargada vamos a extraer su contenido con el siguiente comando:
+
+    sudo tar -xzvf latest.tar.gz
+    
+El siguiente paso será mover el directorio de WordPress que hemos extraído a la raíz del documento web, la cual esta en la ruta /var/www/html/, allí vamos a ejecutar lo siguiente:
+
+  (listamos el contenido)
+        
+        ls -l
+  (copiamos el contenido a nuestro sitio)
+        
+        sudo cp -R wordpress /var/www/html/solvetic.lan
+        
+   (verificamos el contenido) 
+   
+        ls -l /var/www/html/
+
+**Ahora vamos a configurar los permisos en el directorio del sitio web el cual es /var/www/html/solvetic.lan, estos permisos involucran que debe ser propiedad del usuario y del grupo de Apache2 www-data:**
+
+🐧
+    
+    sudo chown -R www-data:www-data /var/www/html/solvetic.lan
+    
+🐧    
+
+    sudo chmod -R 775 /var/www/html/solvetic.lan
+    
+**Vamos a la a la raíz de documentos del sitio web y allí vamos a crear un archivo wp-config.php tomando como origen el archivo de configuración de la siguiente manera:**
+
+        cd /var/www/html/solvetic.lan
+        sudo mv wp-config-sample.php wp-config.php
+        
+  **Abrimos el archivo de configuración con el editor deseado:**
+  
+        sudo nano wp-config.php
+        
+        
+  **Debemos ir a las siguientes líneas:**
+  
+DB_NAME
+DB_USER
+DB_PASSWORD
+ 
+
+Establecemos el nombre y contraseña creados en la base de datos:
+
+Guardamos los cambios y salimos del editor con las teclas Ctrl + X.
+
+Se requiere configurar el servidor web Apache para que aloje el sitio de WordPress con el nombre de dominio.
+
+Para ello debemos crear un host virtual y establecer la configuración de Apache, ejecutamos lo siguiente:
+
+        sudo nano /etc/apache2/sites-available/solvetic.lan.conf
+        
+ En el archivo ingresaremos lo siguiente:
+ 
+        <VirtualHost *:80>
+			ServerName solvetic.lan
+			ServerAdmin webmaster@localhost
+			DocumentRoot /var/www/html/solvetic.lan
+			ErrorLog ${APACHE_LOG_DIR}/error.log
+			CustomLog ${APACHE_LOG_DIR}/access.log combined
+    </VirtualHost>
+**Guardamos los cambios y salimos del editor con las teclas Ctrl + X.
+
+Vamos a verificar que la configuración de Apache y su sintaxis sea correcta, en caso de ser así, vamos a habilitar el nuevo sitio y cargar el servicio apache2 para aplicar los nuevos cambios que hemos realizado:
+
+    apache2ctl -t
+    sudo a2ensite solvetic.lan.conf
+    sudo systemctl reload apache2
+
+Después de esto vamos a desactivar el host virtual por defecto con el fin de permitir que nuevo sitio sea cargado de forma correcta desde el navegador web, ingresamos lo siguiente en la terminal:
+
+    sudo a2dissite 000-default.conf
+    sudo systemctl reload apache2
+    
+ Cómo acceder a WordPress y finalizar configuración
+ colocamos en el explorador la ip de nuestra maquina
+ 
+    52.165.17.203
+    
+ En la ventana inicial seleccionamos el idioma a usar:
+ 
+Damos clic en Continuar y a continuación ingresamos el nombre del sitio, el usuario y podemos dejar la contraseña asignada por WordPress, si es así debemos copiarla debido a su complejidad:
+ 
+Completamos los datos solicitados y damos clic en “Instalar WordPress” para completar el proceso:
+ 
+ 
+Damos clic en Aceptar y seremos redireccionados a la pagina de inicio de sesión de WordPress: 
+
+Clic en “Acceder” y este será el entorno de WordPress
