@@ -51,8 +51,30 @@ Tutorial Wordpress Cli Linux
  
  **Install Apache, PHP, and MySQL Para Poder Utilizar Wordpress**
  
-    sudo apt install apache2 php libapache2-mod-php mariadb-server mariadb-client php-mysql php-curl php-xml php-mbstring php-imagick php-zip php-gd
+LAMP (Linux, Apache, MariaDB y PHP) es un conjunto de aplicaciones ideales para el trabajo web y gestión de datos, en primer lugar, instalamos Apache si no lo tenemos con el siguiente comando:
 
+    sudo apt install apache2
+    
+Todos los archivos de configuración de Apache2 están en el directorio /etc/apache2 y el archivo de configuración principal es /etc//etc/apache2/apache2.conf.
+
+Vemos el estado de Apache con el siguiente comando:
+
+    sudo systemctl status apache2
+    
+Habilitamos Apache en el arranque de Ubuntu:
+
+    sudo systemctl is-enabled apache2
+    
+Ahora instalaremos el gestor de base de datos el cual será MariaDB, para ello ejecutamos lo siguiente:
+
+    sudo apt install mariadb-server mariadb-client
+    
+    
+Comprobamos el estado de MariaDB:
+
+    sudo systemctl status mariadb
+    
+    
 **Te da la versión de Apache y verifica si está bien instalado**
 
     apache2 -v
@@ -77,7 +99,19 @@ iniciamos mysql.
 
     sudo mysql
 
-Crea una nueva base de datos para WordPress. En este ejemplo, llamaremos al nuestro wordpress_db, pero puede usar el nombre que desee.
+Crearemos un usuario y su base de datos para wordpress.
 
-    CREATE DATABASE wordpress_db;
+    CREATE USER ‘hmbr’@‘localhost' IDENTIFIED VIA mysql_native_password;
+    
+🐧
+  
+    SET PASSWORD FOR ‘hmbr’@‘localhost' = PASSWORD(‘12345’);
+    
+🐧
+      
+    CREATE DATABASE IF NOT EXISTS `hmbr`;
+    
+🐧
+    
+    GRANT ALL PRIVILEGES ON `hmbr`.* TO ‘hmbr’@‘localhost';
 
