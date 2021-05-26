@@ -47,6 +47,37 @@ Tutorial Wordpress Cli Linux
 **Con este comando actualizas la maquina**
 
         sudo apt-get update
+        
+ 
+ **Install Apache, PHP, and MySQL Para Poder Utilizar Wordpress**
+ 
+    sudo apt install apache2 php libapache2-mod-php mariadb-server mariadb-client php-mysql php-curl php-xml php-mbstring php-imagick php-zip php-gd
 
+**Te da la versión de Apache y verifica si está bien instalado**
 
-   
+    apache2 -v
+
+**Te da la versión de MySQL y verifica si está bien instalado**
+
+    mysql -V
+
+**Te da la versión de PHP y verifica si está bien instalado**
+
+    php -v
+    
+ **Configure MySQL**
+ 
+    sudo mysql_secure_installation
+    
+Le Pedira una contraseña y la tendra que indicar y Debe responder con y (sí) al resto de las solicitudes y configurar una contraseña de root cuando se le solicite. Esta configuración solo tarda un momento en completarse.
+
+**Crear base de datos para wordpress**
+
+iniciamos mysql.
+
+    sudo mysql
+
+Crea una nueva base de datos para WordPress. En este ejemplo, llamaremos al nuestro wordpress_db, pero puede usar el nombre que desee.
+
+    CREATE DATABASE wordpress_db;
+
