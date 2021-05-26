@@ -162,7 +162,7 @@ Para crear el usuario:
 🐧 Obtener la lista de los usuarios de MySQL.
 
     SELECT user FROM mysql.user;
-    
+   <img src="az/cap22.png" class="card-img-top" alt="...">
  **Descargar archivo de WordPress Linux**
  
 En primer lugar, vamos a descargar la última versión de WordPress con el siguiente comando:
@@ -251,12 +251,14 @@ Después de esto vamos a desactivar el host virtual por defecto con el fin de pe
     52.165.17.203
     
  En la ventana inicial seleccionamos el idioma a usar:
- 
+<img src="az/cap23.png" class="card-img-top" alt="...">
+<img src="az/cap24.png" class="card-img-top" alt="...">
 Damos clic en Continuar y a continuación ingresamos el nombre del sitio, el usuario y podemos dejar la contraseña asignada por WordPress, si es así debemos copiarla debido a su complejidad:
  
 Completamos los datos solicitados y damos clic en “Instalar WordPress” para completar el proceso:
- 
+<img src="az/cap25.png" class="card-img-top" alt="..."> 
  
 Damos clic en Aceptar y seremos redireccionados a la pagina de inicio de sesión de WordPress: 
 
 Clic en “Acceder” y este será el entorno de WordPress
+<img src="az/cap26.png" class="card-img-top" alt="...">
