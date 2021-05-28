@@ -163,6 +163,10 @@ Para crear el usuario:
 
     SELECT user FROM mysql.user;
    <img src="az/cap22.png" class="card-img-top" alt="...">
+   
+  Salimos de mysql 
+  	
+	quit
  **Descargar archivo de WordPress Linux**
  
 En primer lugar, vamos a descargar la última versión de WordPress con el siguiente comando:
