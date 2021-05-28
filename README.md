@@ -144,20 +144,20 @@ Una vez dentro podemos ver las bases de datos
     
 Para crear el usuario:
 
-    CREATE USER ‘hmbr’@‘localhost' IDENTIFIED VIA mysql_native_password;
+    CREATE USER 'usuario'@'localhost' IDENTIFIED VIA mysql_native_password;
     
    <img src="az/cap17.png" class="card-img-top" alt="...">
 🐧 Ahora le establecemos una password:
 
-    SET PASSWORD FOR ‘hmbr’@‘localhost' = PASSWORD(‘12345’);
+    SET PASSWORD FOR 'usuario'@'localhost' = PASSWORD('patata');
    <img src="az/cap18.png" class="card-img-top" alt="..."> 
 🐧 Creamos la base de datos:
       
-    CREATE DATABASE IF NOT EXISTS `hmbr`;
+    CREATE DATABASE IF NOT EXISTS `usuario`;
   <img src="az/cap19.png" class="card-img-top" alt="...">  
 🐧 Le damos todos los privilegios sobre esta base de datos al usuario recién creado:
     
-    GRANT ALL PRIVILEGES ON `hmbr`.* TO ‘hmbr’@‘localhost';
+    GRANT ALL PRIVILEGES ON `usuario`.* TO 'usuario'@'localhost';
   <img src="az/cap20.png" class="card-img-top" alt="...">  
 🐧 Obtener la lista de los usuarios de MySQL.
 
