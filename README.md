@@ -210,11 +210,11 @@ El siguiente paso será mover el directorio de WordPress que hemos extraído a l
         sudo nano wp-config.php
         
         
-  **Debemos ir a las siguientes líneas:**
+  **Debemos ir a las siguientes líneas:y remplazar con sus datos de la base que crearon**
   
-DB_NAME
-DB_USER
-DB_PASSWORD
+	DB_NAME
+	DB_USER
+	DB_PASSWORD
  
 
 Establecemos el nombre y contraseña creados en la base de datos:
